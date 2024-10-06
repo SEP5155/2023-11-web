@@ -18,6 +18,8 @@ jobs:
 
       - name: Check after repo is here
         run: ls -al
+      - name: Remove unnessasy folders
+        run: rm -r ./.git ./.github
       - name: install sshpass
         run: sudo apt-get install -y sshpass
       - name: archive all project files
