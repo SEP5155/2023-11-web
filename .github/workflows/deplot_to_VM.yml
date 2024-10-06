@@ -29,4 +29,4 @@ jobs:
       - name: Deploy to VM
         run: |
           sshpass -p ${{ secrets.VM_PASSWORD }} ssh -o StrictHostKeyChecking=no -p 13371 ${{ secrets.VM_USER }}@0.tcp.eu.ngrok.io "
-          cd /var/www/web_site & ls -al"
+          cd /var/www/web_site & ls -al & pwd"
