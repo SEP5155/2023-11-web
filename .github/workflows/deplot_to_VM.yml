@@ -20,6 +20,8 @@ jobs:
         run: ls -al
       - name: install sshpass
         run: sudo apt-get install -y sshpass
+      - name: archive all project files
+        run: tar -czvf app_code.tar.gz . && ls -al 
       #- name: connect to VM
        # uses: shimataro/ssh-key-action@v2
         #with:
