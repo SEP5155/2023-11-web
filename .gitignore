@@ -23,7 +23,6 @@ TestResults.xml
 # git and other
 .git
 .github
-.gitignore
 *.log
 *.tmp
 node_modules/
