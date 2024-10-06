@@ -28,5 +28,5 @@ jobs:
 
       - name: Deploy to VM
         run: |
-          sshpass -p ${{ secrets.VM_PASSWORD }} ssh -p 22 ${{ secrets.VM_USER }}@192.168.110.116 "
+          sshpass -p ${{ secrets.VM_PASSWORD }} ssh -p 22 ${{ secrets.VM_USER }}@https://0bb6-91-226-35-172.ngrok-free.app "
           cd /var/www/web_site & ls -al"
