@@ -43,6 +43,6 @@ jobs:
           ls -al && 
           echo 'directory is' &&
           pwd &&
-          unzip app_code.tar.gz &&
+          unzip -o app_code.tar.gz &&
           rm app_code.tar.gz &&
           ls -al"
