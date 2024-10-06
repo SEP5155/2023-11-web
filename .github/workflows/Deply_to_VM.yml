@@ -23,8 +23,7 @@ jobs:
       - name: install sshpass
         run: sudo apt-get install -y sshpass
       - name: archive all project files
-        run: |
-          tar --exclude='/.git' --exclude='/.github' -czvf app_code.tar.gz .
+        run: zip -r app_code.tar.gz ./ -x *.git*
       #- name: connect to VM
        # uses: shimataro/ssh-key-action@v2
         #with:
