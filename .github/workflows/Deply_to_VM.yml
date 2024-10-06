@@ -32,7 +32,7 @@ jobs:
 
       - name: Deploy to VM
         run: |
-          sshpass -p ${{ secrets.VM_PASSWORD }} scp -o StrictHostKeyChecking=no -P 22 app_code.tar.gz ${{ secrets.VM_USER }}@${{ env.VM_IP }}:${{ env.WORK_DIR }}
+          sshpass -p ${{ secrets.VM_PASSWORD }} scp -o StrictHostKeyChecking=no -P 13371 app_code.tar.gz ${{ secrets.VM_USER }}@${{ env.VM_IP }}:${{ env.WORK_DIR }}
 
       - name: check files are there
         run: |
