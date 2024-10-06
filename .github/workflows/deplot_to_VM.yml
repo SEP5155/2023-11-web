@@ -18,14 +18,15 @@ jobs:
 
       - name: Check after repo is here
         run: ls -al
-
-      - name: connect to VM
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.MY_SECRET_KEY }}
-          known_hosts: '192.168.110.116'
+      - name: install sshpass
+        run: sudo apt-get install -y sshpass
+      #- name: connect to VM
+       # uses: shimataro/ssh-key-action@v2
+        #with:
+         # key: ${{ secrets.MY_SECRET_KEY }}
+          #known_hosts: '192.168.110.116'
 
       - name: Deploy to VM
         run: |
-          ssh -o StrictHostKeyChecking=no github_actions@192.168.110.116 "
+          sshpass -p ${{ secrets.VM_PASSWORD }} ssh -p 22 ${{ secrets.VM_USER }}@192.168.110.116 "
           cd /var/www/web_site & ls -al"
