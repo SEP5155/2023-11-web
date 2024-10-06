@@ -1,4 +1,8 @@
 name: Deploy_to_my_VM
+env:
+  WORK_DIR : "/var/www/web-site"
+  VM_IP    : "0.tcp.eu.ngrok.io"
+  VM_PORT  : "13371"
 
 on:
   push:
@@ -24,17 +28,17 @@ jobs:
         run: sudo apt-get install -y sshpass
       - name: archive all project files
         run: zip -r app_code.tar.gz ./ -x *.git*
-      #- name: connect to VM
-       # uses: shimataro/ssh-key-action@v2
-        #with:
-         # key: ${{ secrets.MY_SECRET_KEY }}
-          #known_hosts: '192.168.110.116'
+
 
       - name: Deploy to VM
         run: |
-          sshpass -p ${{ secrets.VM_PASSWORD }} ssh -o StrictHostKeyChecking=no -p 13371 ${{ secrets.VM_USER }}@0.tcp.eu.ngrok.io "
+          sshpass -p ${{ secrets.VM_PASSWORD }} scp -o StrictHostKeyChecking=no -p ${{ env.VM_PORT }} app_code.tar.gz ${{ secrets.VM_USER }}@${{ env.VM_IP }}:${{ env.WORK_DIR }}
+
+      - name: check files are there
+        run: |
+          sshpass -p ${{ secrets.VM_PASSWORD }} ssh -o StrictHostKeyChecking=no -p ${{ env.VM_PORT }} ${{ secrets.VM_USER }}@${{ env.VM_IP }} "
           echo 'moving to work dir' &&
-          cd /var/www/web_site &&
+          cd ${{ env.WORK_DIR }} &&
           echo 'directory content' &&
           ls -al && 
           echo 'directory is' &&
