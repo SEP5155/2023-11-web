@@ -1,6 +1,6 @@
 name: Deploy_to_my_VM
 env:
-  WORK_DIR : "/var/www/web-site"
+  WORK_DIR : "/var/www/web_site"
   VM_IP    : "0.tcp.eu.ngrok.io"
   VM_PORT  : "13371"
 
