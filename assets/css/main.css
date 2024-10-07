@@ -1775,3 +1775,12 @@ body.is-article-visible #footer {
 body.is-preload #footer {
 	opacity: 0;
 }
+.modal {
+	display: none;
+	background-color: #000000;
+	color: #ffffff;
+	font-size: 1rem;
+}
+.modal.active {
+	display: block;
+}
