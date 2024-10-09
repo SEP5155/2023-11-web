@@ -1,0 +1,26 @@
+name: Test_workflow
+
+env:
+  MY_VAR: "test"
+  MY_NUM: 5155
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  buid:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Starting work
+          run: |
+            echo "Initiated by ${{ github.actor }}" &&
+            echo "commit: ${{ github.sha }}"
+        - name: getting the code
+          uses: actions/checkout@v4
+        
+        - name: check system and content
+          run: |
+            echo "We are running OS: ${{ runner.os }}" &&
+            echo "My var is: ${{ env.MY_NUM }} and my number ${{ env.MY_NUM }}"
